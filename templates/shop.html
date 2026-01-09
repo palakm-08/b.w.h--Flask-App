@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title %}
+bmh-Shop
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        {% for item in items %}
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+            <div class="card h-100 shadow-sm">
+                <img src="{{ url_for('static', filename=item.image) }}"
+                class="card-img-top"
+                alt="{{item.p_name}}">
+
+                <div class="card-body text-center">
+                    <h5 class="card-title">{{item.p_name}}</h5>
+                    <p class="card-text text-muted" style="color: gray;">{{item.desc}}</p>
+                    <h6 class="card-text">Rs.{{item.price}}</h6>
+                </div>
+
+                <a href="" class="btn btn-primary btn-sm mb-3 mx-3" style="background-color:#C8A2C8; border: none; border-radius: 100px;", onmouseover="this.style.backgroundColor='transparent'; this.style.color='#C8A2C8';" onmouseout="this.style.backgroundColor='#C8A2C8'; this.style.color='white';">Buy</a>
+                <a href="" class="btn btn-outline-secondary btn-sm mb-2 mx-3" style="border-color: #C8A2C8; border-radius: 100px;" onmouseover="this.style.backgroundColor='#C8A2C8'; this.style.color='white';" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#C8A2C8';">Details</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<style>
+    .card-img-top {
+    height: 180px;
+    object-fit: cover;
+}
+
+.card:hover{
+cursor: pointer;
+}
+</style>
+{% endblock %}
