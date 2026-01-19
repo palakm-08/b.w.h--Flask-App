@@ -7,6 +7,15 @@ class User(db.Model):
     u_age = db.Column(db.Integer(), nullable=False)
     u_email = db.Column(db.String(120), nullable=False, unique=True)
     u_items = db.relationship('products', backref='owned_user', lazy=True)
+    password_hash = db.Column(db.String(255), nullable=False)
+
+    def set_password(self, password):
+        if len(password) < 8:
+            raise ValueError("Password must be at least 8 characters long")
+        self.password_hash = generate_password_hash(password)
+
+    def check_password(self, password):
+        return check_password_hash(self.password_hash, password)
 
 
 class products(db.Model):
@@ -15,7 +24,7 @@ class products(db.Model):
     price = db.Column(db.Numeric(10,2), nullable=False)
     image = db.Column(db.String(300), nullable=False)
     desc = db.Column(db.String(500), nullable=False)
-    owner = db.Column(db.Integer(), db.ForeignKey('u_id'))
+    owner = db.Column(db.Integer(), db.ForeignKey('user.u_id'))
     
 with app.app_context():
     db.create_all()
