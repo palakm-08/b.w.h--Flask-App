@@ -1,4 +1,5 @@
-from flower.models import products, app, db
+from flower import app, db
+from flower.models import products
 
 items = [
     products(p_name='Lily', price=30, image='images/lily.jpg', desc='Elegant white bloom'),

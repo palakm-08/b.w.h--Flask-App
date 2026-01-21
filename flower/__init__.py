@@ -5,6 +5,7 @@ app = Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:palak_1008@localhost:5432/flower'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SECRET_KEY'] = '1234abcd98zy'
 db = SQLAlchemy(app)
 
 from flower import routes

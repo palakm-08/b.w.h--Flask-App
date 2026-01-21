@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{%block title%}
+Create Account
+{% endblock %}
+
+{% block content %}
+
+<h1 class="my-5 text-center" style="font-family: Cedarville Cursive, poppins, Arial, Helvetica, sans-serif; color: #C8A2C8;">BloomWithHer</h1>
+<div class="container" style="max-width: 25rem; border: 0.5px solid  #C8A2C8;">
+    <h5 class="font-weight-normal my-4 text-center">Create Account</h5>
+    <form method="POST" class="form-register my-3">
+        {{ form.username.label() }}
+        {{ form.username(class="form-control", placeholder="Username", style="margin-bottom:1rem;")}}
+
+        {{ form.user_email.label() }}
+        {{ form.user_email(class="form-control", placeholder="Email address", style="margin-bottom:1rem;")}}
+
+        {{ form.pass1.label() }}
+        {{ form.pass1(class="form-control", placeholder="Enter password", style="margin-bottom:1rem;") }}
+
+        {{ form.pass2.label() }}
+        {{ form.pass2(class="form-control", placeholder="Confirm password", style="margin-bottom:1rem;") }}
+
+        {{ form.submit_btn(class="btn btn-primary btn-lg btn-block my-4", style="background-color: #C8A2C8; border:none;", onmouseover="this.style.backgroundColor='transparent'; this.style.color='#C8A2C8';", onmouseout="this.style.backgroundColor='#C8A2C8'; this.style.color='white';")}}
+    </form>
+</div>
+
+{% endblock %}

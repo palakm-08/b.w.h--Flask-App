@@ -8,10 +8,10 @@ from flower.forms import RegisterForm
 def home_pg():
     return render_template('home.html')
 
-@app.route('/register')
+@app.route('/profile/register')
 def create_account():
     form = RegisterForm()
-    return render_template('forms.html', form=form)
+    return render_template('regForm.html', form=form)
 
 @app.route('/shop')
 def shop_products():
