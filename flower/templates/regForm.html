@@ -10,6 +10,7 @@ Create Account
     <h5 class="font-weight-normal my-4 text-center">Create Account</h5>
     <form method="POST" class="form-register my-3">
         {{ form.username.label() }}
+        {{ form.hidden_tag() }}
         {{ form.username(class="form-control", placeholder="Username", style="margin-bottom:1rem;")}}
 
         {{ form.user_email.label() }}
