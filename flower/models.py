@@ -5,7 +5,6 @@ class User(db.Model):
     __tablename__ = 'users'
     u_id = db.Column(db.Integer(), primary_key=True, autoincrement=True)
     u_name = db.Column(db.String(100), nullable=False)
-    u_age = db.Column(db.Integer(), nullable=False)
     u_email = db.Column(db.String(120), nullable=False, unique=True, index=True)
     u_items = db.relationship('products', backref='owned_user', lazy=True)
     password_hash = db.Column(db.String(255), nullable=False)

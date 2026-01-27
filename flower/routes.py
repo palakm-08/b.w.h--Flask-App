@@ -1,5 +1,5 @@
 from flower import app
-from flask import render_template, redirect, url_for
+from flask import render_template, redirect, url_for, flash
 from flower.models import products, User
 from flower.forms import RegisterForm
 from flower import db
@@ -22,6 +22,10 @@ def create_account():
         db.session.add(user_to_create)
         db.session.commit()
         return redirect(url_for('shop_products'))
+    
+    if form.errors != {}:
+        for error_msg in form.errors.values():
+            flash(f"There was an error with creating a user : {error_msg}", category='danger')
     return render_template('regForm.html', form=form)
 
 @app.route('/shop')
