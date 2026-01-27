@@ -17,8 +17,9 @@ def create_account():
         user_to_create = User(
             u_name = form.username.data,
             u_email = form.user_email.data,
-            password_hash = form.pass1.data
             )
+        user_to_create.set_password(form.pass1.data)
+
         db.session.add(user_to_create)
         db.session.commit()
         return redirect(url_for('shop_products'))
